@@ -8,22 +8,14 @@ public class Computation {
     private final char operation;
     public int result;
 
-    private static char [] allowedOperations = {'+', '-','*','/'};
+    private static char [] allowedOperations = {'+','-','*','/'};
 
     public Computation(String input)
     {
-//        input=input.replace(" ", "");
-        System.out.println(input);
         int index=SearchForOperation(input);
-        System.out.println(index);
         this.operation=input.charAt(index);
-        System.out.println(operation);
         this.firstNumber=Integer.parseInt(input.substring(0,index).trim());
-        System.out.println(firstNumber);
         this.secondNumber=Integer.parseInt(input.substring(index+1).trim());
-        System.out.println(secondNumber);
-        System.out.println(firstNumber+"__"+secondNumber+"___"+operation);
-
     }
 
     public static int SearchForOperation(String input)
@@ -40,5 +32,20 @@ public class Computation {
             }
         }
         return index;
+    }
+
+    public static void Compute(Computation comp)
+    {
+        switch (comp.operation)
+        {
+            case '+': comp.result= comp.firstNumber+ comp.secondNumber;
+                break;
+            case '-':comp.result= comp.firstNumber-comp.secondNumber;
+                break;
+            case '*':comp.result= comp.firstNumber*comp.secondNumber;
+                break;
+            case '/':comp.result= comp.firstNumber/comp.secondNumber;
+                break;
+        }
     }
 }
